@@ -6,8 +6,10 @@
 package persistencia;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.*;
 import javax.swing.JOptionPane;
+import logica.Producto;
 
 public class ConexionDB {
     // Atributos de la conexión a la base de datos
@@ -91,13 +93,16 @@ public class ConexionDB {
         try {
             stmt = con.createStatement();
             stmt.executeUpdate(sentencia);
-                    JOptionPane.showMessageDialog(null, "¡Los datos han sido Actualizados correctamente!");
+            JOptionPane.showMessageDialog(null, "¡Los datos han sido Actualizados correctamente!");
         } catch (SQLException | RuntimeException error) {
             System.out.println("Error al intentar Actualizar los datos en la tabla" + error);
             return false;
         }
         return true;
     }
+    
+    
+ 
     
     
     

@@ -9,6 +9,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -47,7 +51,7 @@ public class FormularioProductos extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTabbedPane1 = new JTabbedPane();
@@ -97,10 +101,25 @@ public class FormularioProductos extends javax.swing.JFrame {
         jLabel4.setText("Nombre:");
 
         txtRegistrarPrecio.setFont(new Font("Candara", 0, 18)); // NOI18N
+        txtRegistrarPrecio.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
+                txtRegistrarPrecioKeyTyped(evt);
+            }
+        });
 
         txtRegistrarNombre.setFont(new Font("Candara", 0, 18)); // NOI18N
+        txtRegistrarNombre.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
+                txtRegistrarNombreKeyTyped(evt);
+            }
+        });
 
         txtRegistrarCantidad.setFont(new Font("Candara", 0, 18)); // NOI18N
+        txtRegistrarCantidad.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
+                txtRegistrarCantidadKeyTyped(evt);
+            }
+        });
 
         comboRegistrarCategoria.setFont(new Font("Candara", 0, 18)); // NOI18N
         comboRegistrarCategoria.setModel(new DefaultComboBoxModel<>(new String[] { "Mercado", "Aseo", "Limpieza" }));
@@ -116,55 +135,72 @@ public class FormularioProductos extends javax.swing.JFrame {
         GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup().addGap(208, 208, 208)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(208, 208, 208)
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(75, 75, 75)
+                        .addComponent(txtRegistrarNombre, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(70, 70, 70)
+                        .addComponent(txtRegistrarCantidad, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(90, 90, 90)
+                        .addComponent(txtRegistrarPrecio, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(63, 63, 63)
                         .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup().addComponent(jLabel4).addGap(75, 75, 75)
-                                        .addComponent(txtRegistrarNombre, GroupLayout.PREFERRED_SIZE, 220,
-                                                GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup().addComponent(jLabel1).addGap(70, 70, 70)
-                                        .addComponent(txtRegistrarCantidad, GroupLayout.PREFERRED_SIZE, 220,
-                                                GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup().addComponent(jLabel2).addGap(90, 90, 90)
-                                        .addComponent(txtRegistrarPrecio, GroupLayout.PREFERRED_SIZE, 220,
-                                                GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup().addComponent(jLabel3).addGap(63, 63, 63)
-                                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                .addComponent(BtnGuardar, GroupLayout.PREFERRED_SIZE, 118,
-                                                        GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(comboRegistrarCategoria, GroupLayout.PREFERRED_SIZE, 220,
-                                                        GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(222, Short.MAX_VALUE)));
+                            .addComponent(BtnGuardar, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboRegistrarCategoria, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(222, Short.MAX_VALUE))
+        );
         jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup().addGap(122, 122, 122)
-                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup().addGap(3, 3, 3).addComponent(jLabel4))
-                                .addComponent(txtRegistrarNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-                                        GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup().addGap(3, 3, 3).addComponent(jLabel1))
-                                .addComponent(txtRegistrarCantidad, GroupLayout.PREFERRED_SIZE,
-                                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup().addGap(3, 3, 3).addComponent(jLabel2))
-                                .addComponent(txtRegistrarPrecio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-                                        GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup().addGap(3, 3, 3).addComponent(jLabel3))
-                                .addComponent(comboRegistrarCategoria, GroupLayout.PREFERRED_SIZE,
-                                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addComponent(BtnGuardar, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(126, Short.MAX_VALUE)));
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel4))
+                    .addComponent(txtRegistrarNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel1))
+                    .addComponent(txtRegistrarCantidad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel2))
+                    .addComponent(txtRegistrarPrecio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel3))
+                    .addComponent(comboRegistrarCategoria, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(BtnGuardar, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(126, Short.MAX_VALUE))
+        );
 
         jTabbedPane1.addTab("Registrar", jPanel1);
 
         jTable1.setFont(new Font("Cambria", 0, 11)); // NOI18N
         jTable1.setModel(new DefaultTableModel(
-                new Object[][] { { null, null, null, null, null }, { null, null, null, null, null } },
-                new String[] { "Id", "Nombre", "Cantidad", "Precio", "Categorìa" }));
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Nombre", "Cantidad", "Precio", "Categorìa"
+            }
+        ));
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -180,6 +216,11 @@ public class FormularioProductos extends javax.swing.JFrame {
         }
 
         txtConsultarNombre.setFont(new Font("Candara", 0, 18)); // NOI18N
+        txtConsultarNombre.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
+                txtConsultarNombreKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new Font("Candara", 1, 18)); // NOI18N
         jLabel5.setText("Nombre:");
@@ -197,23 +238,43 @@ public class FormularioProductos extends javax.swing.JFrame {
         comboConsultarCategoria.setModel(new DefaultComboBoxModel<>(new String[] { "Mercado", "Aseo", "Limpieza" }));
 
         txtConsultarPrecio.setFont(new Font("Candara", 0, 18)); // NOI18N
+        txtConsultarPrecio.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
+                txtConsultarPrecioKeyTyped(evt);
+            }
+        });
 
         txtConsultarCantidad.setFont(new Font("Candara", 0, 18)); // NOI18N
+        txtConsultarCantidad.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
+                txtConsultarCantidadKeyTyped(evt);
+            }
+        });
 
         jLabel9.setFont(new Font("Candara", 1, 18)); // NOI18N
         jLabel9.setText("ID:");
 
         txtConsultarId.setFont(new Font("Candara", 0, 18)); // NOI18N
+        txtConsultarId.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
+                txtConsultarIdKeyTyped(evt);
+            }
+        });
 
-        btnConsultar.setFont(new Font("Candara", 0, 14)); // NOI18N
+        btnConsultar.setFont(new Font("Tahoma", 0, 14)); // NOI18N
         btnConsultar.setText("Consultar");
+        btnConsultar.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                btnConsultarMouseClicked(evt);
+            }
+        });
         btnConsultar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnConsultarActionPerformed(evt);
             }
         });
 
-        btnEliminar.setFont(new Font("Candara", 0, 14)); // NOI18N
+        btnEliminar.setFont(new Font("Tahoma", 0, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -221,7 +282,7 @@ public class FormularioProductos extends javax.swing.JFrame {
             }
         });
 
-        btnActualizar.setFont(new Font("Candara", 0, 14)); // NOI18N
+        btnActualizar.setFont(new Font("Tahoma", 0, 14)); // NOI18N
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -232,95 +293,168 @@ public class FormularioProductos extends javax.swing.JFrame {
         GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup().addGroup(jPanel2Layout
-                        .createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup().addGap(18, 18, 18).addComponent(jScrollPane1,
-                                GroupLayout.PREFERRED_SIZE, 759, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createSequentialGroup().addGap(36, 36, 36).addGroup(jPanel2Layout
-                                .createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup().addComponent(jLabel5).addGap(75, 75, 75)
-                                        .addComponent(txtConsultarNombre, GroupLayout.PREFERRED_SIZE, 220,
-                                                GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup().addComponent(jLabel6).addGap(70, 70, 70)
-                                        .addComponent(txtConsultarCantidad, GroupLayout.PREFERRED_SIZE, 220,
-                                                GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup().addComponent(jLabel7).addGap(90, 90, 90)
-                                        .addComponent(txtConsultarPrecio, GroupLayout.PREFERRED_SIZE, 220,
-                                                GroupLayout.PREFERRED_SIZE))
-                                .addGroup(GroupLayout.Alignment.TRAILING,
-                                        jPanel2Layout.createSequentialGroup().addComponent(jLabel8).addGap(63, 63, 63)
-                                                .addComponent(comboConsultarCategoria, GroupLayout.PREFERRED_SIZE, 220,
-                                                        GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup().addComponent(jLabel9)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,
-                                                GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtConsultarId, GroupLayout.PREFERRED_SIZE, 220,
-                                                GroupLayout.PREFERRED_SIZE)))
-                                .addGap(110, 110, 110)
-                                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnConsultar, GroupLayout.PREFERRED_SIZE, 118,
-                                                GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 118,
-                                                GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 118,
-                                                GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(18, Short.MAX_VALUE)));
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 759, GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(75, 75, 75)
+                                .addComponent(txtConsultarNombre, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(70, 70, 70)
+                                .addComponent(txtConsultarCantidad))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(90, 90, 90)
+                                .addComponent(txtConsultarPrecio, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))
+                            .addGroup(GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(63, 63, 63)
+                                .addComponent(comboConsultarCategoria, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtConsultarId, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+                                .addGap(163, 163, 163)))
+                        .addGap(110, 110, 110)
+                        .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addComponent(btnConsultar, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
         jPanel2Layout.setVerticalGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup().addContainerGap()
-                        .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel9).addComponent(txtConsultarId, GroupLayout.PREFERRED_SIZE,
-                                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9)
+                    .addComponent(txtConsultarId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel2Layout.createSequentialGroup().addGap(3, 3, 3)
-                                                        .addComponent(jLabel5))
-                                                .addComponent(txtConsultarNombre, GroupLayout.PREFERRED_SIZE,
-                                                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                        .addGap(10, 10, 10)
-                                        .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel2Layout.createSequentialGroup().addGap(3, 3, 3)
-                                                        .addComponent(jLabel6))
-                                                .addComponent(txtConsultarCantidad, GroupLayout.PREFERRED_SIZE,
-                                                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                        .addGap(10, 10, 10)
-                                        .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel2Layout.createSequentialGroup().addGap(3, 3, 3)
-                                                        .addComponent(jLabel7))
-                                                .addComponent(txtConsultarPrecio, GroupLayout.PREFERRED_SIZE,
-                                                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(btnConsultar, GroupLayout.PREFERRED_SIZE, 32,
-                                                GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 32,
-                                                GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 32,
-                                                GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel5))
+                            .addComponent(txtConsultarNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup().addGap(3, 3, 3).addComponent(jLabel8))
-                                .addComponent(comboConsultarCategoria, GroupLayout.PREFERRED_SIZE,
-                                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(26, Short.MAX_VALUE)));
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel6))
+                            .addComponent(txtConsultarCantidad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel7))
+                            .addComponent(txtConsultarPrecio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnConsultar, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel8))
+                    .addComponent(comboConsultarCategoria, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
 
         jTabbedPane1.addTab("Consultar", jPanel2);
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jTabbedPane1));
-        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jTabbedPane1,
-                GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE));
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnConsultarActionPerformed(ActionEvent evt) {// GEN-FIRST:event_btnConsultarActionPerformed
+    private void txtRegistrarNombreKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtRegistrarNombreKeyTyped
         // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        if(Character.isDigit(validar) || (validar >32 && validar <= 64) || (validar >=91 && validar <=96)|| (validar>=126 && validar <=254)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtRegistrarNombreKeyTyped
+
+    private void txtRegistrarCantidadKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtRegistrarCantidadKeyTyped
+        // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        if(Character.isLetter(validar) || (validar >=32 && validar <= 47) || (validar >=58 && validar <=255)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtRegistrarCantidadKeyTyped
+
+    private void txtRegistrarPrecioKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtRegistrarPrecioKeyTyped
+        // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        if(Character.isLetter(validar) || (validar >=32 && validar <= 43) || (validar >=58 && validar <=255)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtRegistrarPrecioKeyTyped
+
+    private void txtConsultarIdKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtConsultarIdKeyTyped
+        // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        if(Character.isLetter(validar) || (validar >=32 && validar <= 47) || (validar >=58 && validar <=255)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtConsultarIdKeyTyped
+
+    private void txtConsultarNombreKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtConsultarNombreKeyTyped
+        // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        if(Character.isDigit(validar) || (validar >32 && validar <= 64) || (validar >=91 && validar <=96)|| (validar>=126 && validar <=254)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtConsultarNombreKeyTyped
+
+    private void txtConsultarCantidadKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtConsultarCantidadKeyTyped
+        // TODO add your handling code here:
+                char validar = evt.getKeyChar();
+        if(Character.isLetter(validar) || (validar >=32 && validar <= 47) || (validar >=58 && validar <=255)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtConsultarCantidadKeyTyped
+
+    private void txtConsultarPrecioKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtConsultarPrecioKeyTyped
+        // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        if(Character.isLetter(validar) || (validar >=32 && validar <= 43) || (validar >=58 && validar <=255)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtConsultarPrecioKeyTyped
+
+    private void btnConsultarMouseClicked(MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
+
+    }//GEN-LAST:event_btnConsultarMouseClicked
+
+    private void btnConsultarActionPerformed(ActionEvent evt) {// GEN-FIRST:event_btnConsultarActionPerformed
+        
     }// GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnEliminarActionPerformed(ActionEvent evt) {// GEN-FIRST:event_btnEliminarActionPerformed
@@ -337,6 +471,7 @@ public class FormularioProductos extends javax.swing.JFrame {
 
         Producto p = new Producto(nombre, cantidad, categoria, precio);
         p.actualizarProducto(id);
+        limpiarCampos();
     }// GEN-LAST:event_btnActualizarActionPerformed
 
     private void BtnGuardarActionPerformed(ActionEvent evt) {// GEN-FIRST:event_BtnGuardarActionPerformed
@@ -348,8 +483,24 @@ public class FormularioProductos extends javax.swing.JFrame {
 
         Producto p = new Producto(nombre, cantidad, categoria, precio);
         p.guardarProducto();
+        limpiarCampos();
 
     }// GEN-LAST:event_BtnGuardarActionPerformed
+    
+    private void limpiarCampos(){
+        txtRegistrarNombre.setText("");
+        txtRegistrarCantidad.setText("");
+        comboRegistrarCategoria.setSelectedIndex(0);
+        txtRegistrarPrecio.setText("");
+        
+        
+        txtConsultarId.setText("");
+        txtConsultarNombre.setText("");
+        txtConsultarCantidad.setText("");
+        comboConsultarCategoria.setSelectedIndex(0);
+        txtConsultarPrecio.setText("");
+        
+    }
 
     /**
      * @param args the command line arguments
