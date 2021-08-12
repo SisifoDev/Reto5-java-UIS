@@ -13,11 +13,14 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -66,8 +69,6 @@ public class FormularioProductos extends javax.swing.JFrame {
         comboRegistrarCategoria = new JComboBox<>();
         BtnGuardar = new JButton();
         jPanel2 = new JPanel();
-        jScrollPane1 = new JScrollPane();
-        jTable1 = new JTable();
         txtConsultarNombre = new JTextField();
         jLabel5 = new JLabel();
         jLabel6 = new JLabel();
@@ -81,6 +82,8 @@ public class FormularioProductos extends javax.swing.JFrame {
         btnConsultar = new JButton();
         btnEliminar = new JButton();
         btnActualizar = new JButton();
+        jScrollPane2 = new JScrollPane();
+        consultarProductosList = new JList<>();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Formulario de Productos");
@@ -191,30 +194,6 @@ public class FormularioProductos extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Registrar", jPanel1);
 
-        jTable1.setFont(new Font("Cambria", 0, 11)); // NOI18N
-        jTable1.setModel(new DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Id", "Nombre", "Cantidad", "Precio", "Categorìa"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(12);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(2);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(6);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(8);
-        }
-
         txtConsultarNombre.setFont(new Font("Candara", 0, 18)); // NOI18N
         txtConsultarNombre.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent evt) {
@@ -290,16 +269,16 @@ public class FormularioProductos extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane2.setViewportView(consultarProductosList);
+
         GroupLayout jPanel2Layout = new GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 722, GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 759, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
@@ -321,23 +300,30 @@ public class FormularioProductos extends javax.swing.JFrame {
                                 .addComponent(jLabel9)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtConsultarId, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
-                                .addGap(163, 163, 163)))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnConsultar, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)))
                         .addGap(110, 110, 110)
                         .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(btnConsultar, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
-                    .addComponent(txtConsultarId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnConsultar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtConsultarId))
+                        .addGap(10, 10, 10))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -358,8 +344,7 @@ public class FormularioProductos extends javax.swing.JFrame {
                                 .addComponent(jLabel7))
                             .addComponent(txtConsultarPrecio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnConsultar, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(38, 38, 38)
                         .addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)))
@@ -369,7 +354,7 @@ public class FormularioProductos extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addComponent(jLabel8))
                     .addComponent(comboConsultarCategoria, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Consultar", jPanel2);
@@ -454,11 +439,32 @@ public class FormularioProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultarMouseClicked
 
     private void btnConsultarActionPerformed(ActionEvent evt) {// GEN-FIRST:event_btnConsultarActionPerformed
+        DefaultListModel listModel = new DefaultListModel();
+        
+        Producto p = new Producto();
+        ArrayList<Producto> lista;
+        
+        lista = p.listarProductos();
+        
+        for(Producto prod: lista){
+            listModel.addElement(prod);
+        }
+        consultarProductosList.setModel(listModel);
         
     }// GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnEliminarActionPerformed(ActionEvent evt) {// GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        int ventanaYesNotCancel = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el producto seleccionado?");
+        int id = Integer.parseInt(txtConsultarId.getText());
+        if(ventanaYesNotCancel == 0){
+            Producto p = new Producto();
+            p.borrarProducto(id);
+            limpiarCampos();
+        }else{
+            
+        
+        }
+        
     }// GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnActualizarActionPerformed(ActionEvent evt) {// GEN-FIRST:event_btnActualizarActionPerformed
@@ -551,6 +557,7 @@ public class FormularioProductos extends javax.swing.JFrame {
     private JButton btnEliminar;
     private JComboBox<String> comboConsultarCategoria;
     private JComboBox<String> comboRegistrarCategoria;
+    private JList<String> consultarProductosList;
     private JLabel jLabel1;
     private JLabel jLabel2;
     private JLabel jLabel3;
@@ -562,9 +569,8 @@ public class FormularioProductos extends javax.swing.JFrame {
     private JLabel jLabel9;
     private JPanel jPanel1;
     private JPanel jPanel2;
-    private JScrollPane jScrollPane1;
+    private JScrollPane jScrollPane2;
     private JTabbedPane jTabbedPane1;
-    private JTable jTable1;
     private JTextField txtConsultarCantidad;
     private JTextField txtConsultarId;
     private JTextField txtConsultarNombre;

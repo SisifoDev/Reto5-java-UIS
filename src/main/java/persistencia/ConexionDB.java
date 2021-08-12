@@ -54,10 +54,13 @@ public class ConexionDB {
         try {
             stmt = con.createStatement();
             rs = stmt.executeQuery(sentencia);
-        } catch (SQLException | RuntimeException error) {
-            System.out.println("El error es: " + error.getMessage());
-        }catch(Exception error1){
-            System.out.println("El error es: " + error1.getMessage());
+        } catch (SQLException sqlex) {
+            System.out.println("El error es: " + sqlex.getMessage());
+        }catch(RuntimeException rex){
+            System.out.println("El error es: " + rex.getMessage());
+        }catch(Exception ex){
+            System.out.println("El error es: " + ex.getMessage());
+            
         }
         return rs;
     }
@@ -80,7 +83,7 @@ public class ConexionDB {
         try {
             stmt = con.createStatement();
             stmt.execute(sentencia);
-            
+            JOptionPane.showMessageDialog(null, "¡El producto ha sido eliminado exitosamente!");
         } catch (SQLException | RuntimeException error) {
             System.out.println("Error al intentar borrar los datos en la tabla" + error);
             return false;
@@ -101,6 +104,7 @@ public class ConexionDB {
         return true;
     }
     
+ 
     
  
     

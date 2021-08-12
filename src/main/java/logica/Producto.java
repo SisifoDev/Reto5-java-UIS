@@ -5,6 +5,9 @@
  */
 package logica;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import persistencia.ConexionDB;
 
@@ -102,6 +105,46 @@ public class Producto {
     }
     
  
+    //Metodo de borrar producto
+    public boolean borrarProducto(int id){
+         ConexionDB conexion = new ConexionDB();
+        
+        
+        String sentencia = String.format("DELETE FROM productos  WHERE id=%d", id);
+        System.out.println(sentencia);
+        conexion.borrarDB(sentencia);
+        conexion.closeConnection();
+
+        return true;
+    }
+    
+    
+    public ArrayList<Producto> listarProductos(){
+        ArrayList<Producto> listaProductos = new ArrayList<>();
+        ConexionDB conexion = new ConexionDB();
+        String sentencia = "SELECT * FROM productos";
+        ResultSet rs = conexion.consultarDB(sentencia);
+        Producto p;
+        
+        try{
+            while(rs.next()){
+                p = new Producto();
+                p.setId(rs.getInt("id"));
+                p.setNombre(rs.getString("nombre"));
+                p.setCantidad(rs.getInt("cantidad"));
+                p.setCategoria(rs.getString("categoria"));
+                p.setPrecio(rs.getDouble("precio"));
+                listaProductos.add(p);
+            }
+        }catch(SQLException error){
+            System.out.println("Error en la consulta a la DB: " + error.getMessage());
+        }
+        
+        return listaProductos;
+    }
+    
+   
+    
 
 
     @Override
